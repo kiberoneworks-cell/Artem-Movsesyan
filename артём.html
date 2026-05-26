@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Артём и его супер-родители | Мечты согревают сердце</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* ОСТРЫЕ УГЛЫ — никаких скруглений */
+            border-radius: 0 !important;
+        }
+
+        body {
+            background: #FCE9D2;  /* тёплый персиково-медовый фон */
+            font-family: 'Segoe UI', 'Roboto', 'Nunito', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            color: #2C2418;
+            line-height: 1.3;
+            padding: 2rem 1.5rem;
+        }
+
+        /* основной контейнер */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        /* крупные шрифты, контраст */
+        h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #C06C2E, #A35118);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.03);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #734C2C;
+            border-left: 6px solid #E59B4A;
+            padding-left: 1.2rem;
+            margin-bottom: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        /* сетка карточек: гибкая, острые углы */
+        .family-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        /* карточки: резкие углы, тёплый бежевый фон, глубокие тени */
+        .card {
+            background: #FFFCF5;
+            flex: 1;
+            min-width: 270px;
+            max-width: 360px;
+            padding: 2rem 1.8rem;
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.05);
+            border: 2px solid #E9CDA7;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        /* иконка-обёртка: крупная, острая */
+        .icon-circle {
+            font-size: 3.2rem;
+            color: #D17A2B;
+            background: #F9E5D2;
+            width: 85px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #E2B787;
+            margin-bottom: 0.2rem;
+        }
+
+        /* имя — очень крупный шрифт */
+        .card-name {
+            font-size: 2.7rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: #402C1C;
+            line-height: 1.1;
+            margin-top: 0.25rem;
+        }
+
+        .role-tag {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #F2DEC6;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            letter-spacing: 1px;
+            color: #8B5A2E;
+            border: 1px solid #E1C29A;
+            width: fit-content;
+        }
+
+        /* детали информации: возраст, мечта, суперспособность */
+        .info-line {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin: 0.5rem 0 0.2rem;
+            flex-wrap: wrap;
+        }
+
+        .info-line i {
+            width: 1.8rem;
+            font-size: 1.7rem;
+            color: #C56923;
+        }
+
+        .info-text {
+            font-weight: 600;
+            color: #2B3B2C;
+        }
+
+        .superpower {
+            background: #FFF1E0;
+            padding: 0.7rem 1rem;
+            margin-top: 0.5rem;
+            border-left: 6px solid #E09D56;
+            font-size: 1.35rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .superpower span {
+            background: none;
+            font-weight: 800;
+            color: #AA5C1C;
+        }
+
+        /* блок мечты – общий стиль для ярких акцентов */
+        .dream-badge {
+            background: #FFE9BC;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 0.6rem 1rem;
+            border: 2px solid #DBA469;
+            margin-top: 0.3rem;
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        /* добавляем класс для двух мечт – чтобы сохранить компактность */
+        .dream-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .dream-item {
+            background: #FFE9BC;
+            border: 2px solid #DBA469;
+            padding: 0.6rem 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .dream-item i {
+            font-size: 1.6rem;
+            color: #C96F28;
+        }
+
+        /* вдохновляющая цитата/футер */
+        .family-motto {
+            text-align: center;
+            margin-top: 3.5rem;
+            padding: 2rem 1rem;
+            background: #F4E1CA;
+            border-top: 4px solid #E2BA85;
+            border-bottom: 4px solid #E2BA85;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #4E321C;
+        }
+
+        .family-motto i {
+            margin: 0 0.5rem;
+            color: #CF7A2E;
+        }
+
+        /* адаптивность – сохраняем крупные шрифты */
+        @media (max-width: 780px) {
+            body {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.7rem;
+            }
+            .subhead {
+                font-size: 1.3rem;
+            }
+            .card-name {
+                font-size: 2.2rem;
+            }
+            .info-line {
+                font-size: 1.2rem;
+            }
+            .superpower {
+                font-size: 1.2rem;
+            }
+            .dream-item {
+                font-size: 1rem;
+            }
+            .family-motto {
+                font-size: 1.3rem;
+            }
+            .card {
+                min-width: 260px;
+                padding: 1.5rem;
+            }
+            .icon-circle {
+                width: 70px;
+                height: 70px;
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .card-name {
+                font-size: 1.9rem;
+            }
+            .dream-item {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* гарантия острых углов */
+        button, img, .card, .icon-circle, .superpower, .dream-badge, .dream-item, .role-tag, .family-motto {
+            border-radius: 0px;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 1px solid #E7CDA8;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #795F42;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <i class="fas fa-star-of-life" style="color:#C56C2A; font-size: 0.9em;"></i> 
+                Семья с суперсилой
+            </h1>
+            <div class="subhead">
+                Артём, Марина и Гарик — <strong>мечты и таланты</strong> под одной крышей
+            </div>
+        </header>
+
+        <!-- сетка трёх карточек: ребёнок + два родителя (острые углы, крупно) -->
+        <div class="family-grid">
+            
+            <!-- КАРТОЧКА РЕБЁНКА: АРТЁМ (добавлена новая мечта: поехать в Армению) -->
+            <div class="card">
+                <div class="icon-circle">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="card-name">Артём</div>
+                <div class="role-tag"><i class="fas fa-child"></i> Сын · 8 лет</div>
+                
+                <div class="info-line">
+                    <i class="fas fa-cake-candles"></i>
+                    <span class="info-text">Возраст: <strong>8 лет</strong></span>
+                </div>
+                
+                <!-- Блок мечт: две мечты (стать изобретателем + поехать в Армению) -->
+                <div class="dream-list">
+                    <div class="dream-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>✨ Мечта: <strong>стать изобретателем</strong> ✨</span>
+                    </div>
+                    <div class="dream-item">
+                        <i class="fas fa-flag-checkered"></i>
+                        <span>🇦🇲 Новая мечта: <strong>поехать в Армению</strong> 🇦🇲</span>
+                    </div>
+                </div>
+                
+                <div class="superpower">
+                    <i class="fas fa-gear fa-fw"></i>
+                    <span>🧠 Изобретательский склад ума + любовь к путешествиям</span>
+                </div>
+                <p style="font-size: 1rem; margin-top: 0.5rem; color: #5A3F28; font-weight: 500;">
+                    <i class="fas fa-rocket"></i> Любит конструкторы, механизмы и мечтает увидеть горы и древние храмы Армении.
+                </p>
+            </div>
+
+            <!-- КАРТОЧКА МАМЫ: МАРИНА (суперспособность: петь) -->
+            <div class="card">
+                <div class="icon-circle">
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
+                <div class="card-name">Марина</div>
+                <div class="role-tag"><i class="fas fa-female"></i> Мама · Вдохновение</div>
+                
+                <div class="info-line">
+                    <i class="fas fa-music"></i>
+                    <span class="info-text">Суперспособность:</span>
+                </div>
+                <div class="superpower">
+                    <i class="fas fa-head-side-vr"></i>
+                    <span>🎤 <strong>Петь</strong> — голос, который согревает душу</span>
+                </div>
+                <p style="font-size: 1rem; margin-top: 0.8rem; color: #5A3F28; font-weight: 500;">
+                    <i class="fas fa-heart"></i> Мамины колыбельные и весёлые песни наполняют дом радостью.
+                </p>
+                <div class="info-line" style="margin-top:0.2rem;">
+                    <i class="fas fa-star"></i>
+                    <span>«Пением можно вылечить грусть и вдохновить на подвиги»</span>
+                </div>
+            </div>
+
+            <!-- КАРТОЧКА ПАПЫ: ГАРИК (суперспособность: доброта) -->
+            <div class="card">
+                <div class="icon-circle">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="card-name">Гарик</div>
+                <div class="role-tag"><i class="fas fa-male"></i> Папа · Опора</div>
+                
+                <div class="info-line">
+                    <i class="fas fa-dove"></i>
+                    <span class="info-text">Суперспособность:</span>
+                </div>
+                <div class="superpower">
+                    <i class="fas fa-smile-wink"></i>
+                    <span>🤝 <strong>Доброта</strong> — сила, меняющая мир вокруг</span>
+                </div>
+                <p style="font-size: 1rem; margin-top: 0.8rem; color: #5A3F28; font-weight: 500;">
+                    <i class="fas fa-seedling"></i> Доброта Гарика делает семью сплочённой, дарит заботу и терпение.
+                </p>
+                <div class="info-line" style="margin-top:0.2rem;">
+                    <i class="fas fa-sun"></i>
+                    <span>«Тепло и понимание — главные изобретения»</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- объединяющая цитата: связь талантов + упоминание Армении -->
+        <div class="family-motto">
+            <i class="fas fa-quote-left"></i> 
+            Доброта папы + Пение мамы = безграничная поддержка мечты Артёма.<br>
+            А ещё <strong>вся семья мечтает отправиться в Армению</strong> — к истокам вдохновения и древним традициям! 
+            <i class="fas fa-quote-right"></i>
+        </div>
+
+        <!-- короткая секция с фактами: крупный шрифт, острые блоки (подчёркиваем новую мечту) -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; margin: 2rem 0 1rem;">
+            <div style="background: #FFEFDE; border: 2px solid #E8C694; padding: 1.5rem; flex: 1; min-width: 200px;">
+                <i class="fas fa-cogs" style="font-size: 2rem; color:#CA7129; display: block; margin-bottom: 0.5rem;"></i>
+                <h3 style="font-size: 1.7rem; font-weight: 800;">Изобретатель + путешественник</h3>
+                <p style="font-size: 1.2rem; margin-top: 0.3rem;">Артём уже мастерит прототипы и изучает культуру Армении. Его мечта — соединить технологии и новые открытия.</p>
+            </div>
+            <div style="background: #FFEFDE; border: 2px solid #E8C694; padding: 1.5rem; flex: 1; min-width: 200px;">
+                <i class="fas fa-hands-clapping" style="font-size: 2rem; color:#CA7129; display: block; margin-bottom: 0.5rem;"></i>
+                <h3 style="font-size: 1.7rem; font-weight: 800;">Магия голоса</h3>
+                <p style="font-size: 1.2rem; margin-top: 0.3rem;">Марина поёт в семейном кругу, развивая в сыне чувство прекрасного и веру в чудеса.</p>
+            </div>
+            <div style="background: #FFEFDE; border: 2px solid #E8C694; padding: 1.5rem; flex: 1; min-width: 200px;">
+                <i class="fas fa-leaf" style="font-size: 2rem; color:#CA7129; display: block; margin-bottom: 0.5rem;"></i>
+                <h3 style="font-size: 1.7rem; font-weight: 800;">Сила доброты</h3>
+                <p style="font-size: 1.2rem; margin-top: 0.3rem;">Гарик учит, что искренняя доброта — это фундамент для самых смелых открытий и дальних странствий.</p>
+            </div>
+        </div>
+
+        <!-- блок, подчёркивающий суперспособности родители + новая мечта -->
+        <div style="background: #F8EAD9; border: 3px solid #DCAD77; padding: 1.5rem; margin: 1rem 0 2rem; text-align: center;">
+            <p style="font-size: 1.5rem; font-weight: 700;"><i class="fas fa-users"></i> Наша команда мечтателей:</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.3rem; margin-top: 0.8rem;">
+                <span style="font-size: 1.3rem; background: white; border: 2px solid #E0B076; padding: 0.4rem 1rem;"><i class="fas fa-child"></i> Артём — будущий изобретатель ✨ и 🇦🇲 исследователь Армении</span>
+                <span style="font-size: 1.3rem; background: white; border: 2px solid #E0B076; padding: 0.4rem 1rem;"><i class="fas fa-microphone-alt"></i> Марина — суперголос</span>
+                <span style="font-size: 1.3rem; background: white; border: 2px solid #E0B076; padding: 0.4rem 1rem;"><i class="fas fa-hand-peace"></i> Гарик — доброта без границ</span>
+            </div>
+            <p style="margin-top: 1.2rem; font-size: 1.2rem; font-weight: 500;"><i class="fas fa-map-marked-alt"></i> Общая мечта: всей семьёй вдохнуть воздух Армении и подарить Артёму новые горизонты!</p>
+        </div>
+        
+        <footer>
+            <hr style="border-color: #DFBE8F;">
+            <p style="font-size: 1rem;">✨ Каждый день — маленькое изобретение счастья, а мечты ведут к новым странам ✨</p>
+            <p style="font-size: 0.9rem;">&copy; Семья, где мечты сбываются: изобретения, песни, доброта и Армения</p>
+        </footer>
+    </div>
+</body>
+</html>
